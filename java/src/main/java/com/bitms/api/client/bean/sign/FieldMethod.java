@@ -9,18 +9,17 @@ import java.lang.reflect.Method;
 
 /**
  * 
- * @author playguy
- * @version $Id: FieldMethod.java, v 0.1 2015-4-28 下午1:44:25 playguy Exp $
+ * @version $Id: FieldMethod.java, v 0.1 2015-4-28 下午1:44:25 Exp $
  */
 public class FieldMethod
 {
     /**
-     * 属性
+     * field
      */
     private Field  field;
     
     /**
-     * 方法
+     * method
      */
     private Method method;
     

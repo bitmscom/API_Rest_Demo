@@ -19,22 +19,21 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 转换工具类。
+ * Conversion tool class.
  * 
- * @author playguy
  * @since 1.0, Apr 11, 2010
  */
 public class ApiConverters
 {
-    // 是否对JSON返回的数据类型进行校验，默认不校验。给内部测试JSON返回时用的开关。
-    // 规则：返回的"基本"类型只有String,Long,Boolean,Date,采取严格校验方式，如果类型不匹配，报错
+    // Whether to check the data type returned by JSON, the default is not verified. The switch used to return the internal test JSON.
+    // Rule: The only "basic" type returned is String, Long, Boolean, Date, which takes a strict check. If the type does not match, an error is reported.
     public static boolean            isCheckJsonType = false;
 
     private static final Set<String> baseFields      = new HashSet<String>();
 
     private static final Set<String> excludeFields   = new HashSet<String>();
 
-    /** 被子类覆盖的属性 */
+    /** Attributes covered by subclasses */
     private static final Set<String> overideFields   = new HashSet<String>();
     static
     {
@@ -53,16 +52,16 @@ public class ApiConverters
     private ApiConverters()
     {
     }
-    
+
     /**
-     * 使用指定 的读取器去转换字符串为对象。
-     * 
-     * @param <T> 领域泛型
-     * @param clazz 领域类型
-     * @param reader 读取器
-     * @return 领域对象
-     * @throws ApiException
-     */
+      * Use the specified reader to convert a string to an object.
+      *
+      * @param <T> domain generics
+      * @param clazz domain type
+      * @param reader reader
+      * @return domain object
+      * @throws ApiException
+      */
     public static <T> T convert(Class<T> clazz, Reader reader) throws ApiException
     {
         T rsp = null;
@@ -81,7 +80,7 @@ public class ApiConverters
                 }
                 String itemName = pd.getName();
                 String listName = null;
-                // 之前errorCode的属性要剔除掉
+                // Before the errorCode property is removed
                 if (isResponseClazz && excludeFields.contains(itemName))
                 {
                     continue;
@@ -92,14 +91,14 @@ public class ApiConverters
                     Field field = BitmsResponse.class.getDeclaredField(itemName);
                     FieldMethod fieldMethod = new FieldMethod();
                     fieldMethod.setField(field);
-                    // writeMethod属于父类，则直接使用
+                    // writeMethod belongs to the parent class, then use directly
                     if (writeMethod.getDeclaringClass().getName().contains("BitmsResponse"))
                     {
                         fieldMethod.setMethod(writeMethod);
                     }
                     else
                     {
-                        // 否则从父类再取一次
+                        // Otherwise take it again from the parent class
                         writeMethod = tryGetSetMethod(BitmsResponse.class, field, writeMethod.getName());
                         if (writeMethod == null)
                         {
@@ -108,11 +107,11 @@ public class ApiConverters
                         fieldMethod.setMethod(writeMethod);
                     }
                     fieldMethods.add(fieldMethod);
-                    // 如果被子类覆盖的，则从尝试从子类中获取
+                    // If it is overridden by a subclass, try to get it from the subclass
                     if (overideFields.contains(itemName))
                     {
                         field = tryGetFieldWithoutExp(clazz, itemName);
-                        // 属性存在则需要重新从子类获取访问方法
+                        // The attribute exists, you need to get the access method from the subclass again.
                         if (field != null)
                         {
                             writeMethod = tryGetSetMethod(clazz, field, writeMethod.getName());
@@ -140,7 +139,7 @@ public class ApiConverters
                     }
 
                 }
-                // 迭代设置属性
+                // Iteratively set properties
                 for (FieldMethod fieldMethod : fieldMethods)
                 {
                     Field field = fieldMethod.getField();
@@ -163,7 +162,7 @@ public class ApiConverters
                         }
                     }
                     Class<?> typeClass = field.getType();
-                    // 目前
+                    // Currently
                     if (String.class.isAssignableFrom(typeClass))
                     {
                         Object value = reader.getPrimitiveObject(itemName);
@@ -294,16 +293,16 @@ public class ApiConverters
         }
         return rsp;
     }
-    
+
     /**
-     *  尝试获取属性
-     *  
-     *  不会抛出异常，不存在则返回null
-     * 
-     * @param clazz
-     * @param itemName
-     * @return
-     */
+      * Try to get properties
+      *
+      * will not throw an exception, return null if it does not exist
+      *
+      * @param clazz
+      * @param itemName
+      * @return
+      */
     private static Field tryGetFieldWithoutExp(Class<?> clazz, String itemName)
     {
         try
@@ -315,14 +314,14 @@ public class ApiConverters
             return null;
         }
     }
-    
+
     /**
-     *   获取属性设置属性
-     * 
-     * @param clazz
-     * @param field
-     * @return
-     */
+      * Get property setting properties
+      *
+      * @param clazz
+      * @param field
+      * @return
+      */
     private static <T> Method tryGetSetMethod(Class<T> clazz, Field field, String methodName)
     {
         try

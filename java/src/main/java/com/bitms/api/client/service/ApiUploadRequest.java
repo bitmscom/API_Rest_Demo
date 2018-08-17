@@ -7,21 +7,20 @@ import com.bitms.api.client.bean.sign.FileItem;
 import java.util.Map;
 
 /**
- * 上传请求接口，支持同时上传多个文件。
+ * Upload request interface, support uploading multiple files at the same time.
  * 
- * @author playguy
  * @since 1.0, Sep 12, 2009
  */
 public interface ApiUploadRequest<T extends ApiResponse> extends ApiBasicRequest<T>
 {
     /**
-     * 获取所有的Key-Value形式的文件请求参数集合。其中：
-     * <ul>
-     * <li>Key: 请求参数名</li>
-     * <li>Value: 请求参数文件元数据</li>
-     * </ul>
-     * 
-     * @return 文件请求参数集合
-     */
+      * Get all the file request parameter sets in the form of Key-Value. among them:
+      * <ul>
+      * <li>Key: Request parameter name</li>
+      * <li>Value: Request parameter file metadata</li>
+      * </ul>
+      *
+      * @return file request parameter set
+      */
     Map<String, FileItem> getFileParams();
 }

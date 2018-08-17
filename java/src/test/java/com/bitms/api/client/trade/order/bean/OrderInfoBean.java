@@ -4,9 +4,8 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 订单详情bean
+ * @discription : Order details bean
  * @create : 2018-07-07-17
  **/
 public class OrderInfoBean extends BitmsObject {

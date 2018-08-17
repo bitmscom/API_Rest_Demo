@@ -5,21 +5,20 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 交易撤销单笔
+ * @discription : Transaction cancellation
  * @create : 2018-07-07-16
  **/
 public class EntrustCancelBean extends BitmsObject {
 
     /**
-     * 订单ID
+     * Order ID
      */
     @ApiField("orderId")
     private Long orderId;
 
     /**
-     * 交易对
+     * Transaction pair
      */
     @ApiField("symbol")
     private String symbol;

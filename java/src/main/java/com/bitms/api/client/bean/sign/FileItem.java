@@ -5,9 +5,8 @@ import com.bitms.api.client.tool.BitmsUtils;
 import java.io.*;
 
 /**
- * 文件元数据。
+ * File metadata.
  * 
- * @author playguy
  * @since 1.0, Sep 12, 2009
  */
 public class FileItem
@@ -21,9 +20,9 @@ public class FileItem
     private File   file;
     
     /**
-     * 基于本地文件的构造器。
+     * A local file based constructor.
      * 
-     * @param file 本地文件
+     * @param file local files
      */
     public FileItem(File file)
     {
@@ -31,9 +30,9 @@ public class FileItem
     }
     
     /**
-     * 基于文件绝对路径的构造器。
+     * A constructor based on the absolute path of a file.
      * 
-     * @param filePath 文件绝对路径
+     * @param filePath Absolute path of file
      */
     public FileItem(String filePath)
     {
@@ -41,10 +40,10 @@ public class FileItem
     }
     
     /**
-     * 基于文件名和字节流的构造器。
+     * A constructor based on file name and byte stream.
      * 
-     * @param fileName 文件名
-     * @param content 文件字节流
+     * @param fileName file name
+     * @param content File byte stream
      */
     public FileItem(String fileName, byte[] content)
     {
@@ -53,11 +52,11 @@ public class FileItem
     }
     
     /**
-     * 基于文件名、字节流和媒体类型的构造器。
+     * A constructor based on file name, byte stream, and media type.
      * 
-     * @param fileName 文件名
-     * @param content 文件字节流
-     * @param mimeType 媒体类型
+     * @param fileName file name
+     * @param content File byte stream
+     * @param mimeType media type
      */
     public FileItem(String fileName, byte[] content, String mimeType)
     {

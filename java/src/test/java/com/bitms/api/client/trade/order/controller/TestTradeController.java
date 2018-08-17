@@ -14,9 +14,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 测试交易controller
+ * @discription : Test transaction controller
  * @create : 2018-07-07-16
  **/
 public class TestTradeController {
@@ -25,11 +24,11 @@ public class TestTradeController {
 
     //Bitms
     private String apiKey = BitmsConst.apiKey;
-    //加签私钥
+    //private key
     private String priKey = BitmsConst.priKey;
 
     /**
-     * 单笔下单 200
+     * Single order
      * @throws Exception
      */
     @Test
@@ -50,28 +49,7 @@ public class TestTradeController {
     }
 
     /**
-     * 批量下单 200
-     * @throws Exception
-     */
-    @Test
-    public void doMatchBatchRequest() throws Exception {
-        String[] data1 = {root + "order/order_batch", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
-        EntrustBean data = new EntrustBean();
-        data.setAmount(new BigDecimal("0.01"));
-        data.setDirect("sell");
-        data.setPrice(new BigDecimal(19000));
-        data.setSymbol("btc2usd,btc2usd");
-        data.setType("limit");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
-        System.out.println(response.getBody());
-    }
-
-    /**
-     * 交易撤销(单笔) 200
+     * Transaction cancellation (single stroke)
      * @throws Exception
      */
     @Test
@@ -88,7 +66,7 @@ public class TestTradeController {
     }
 
     /**
-     * 交易撤销(多笔) 200
+     * Transaction cancellation (multiple)
      * @throws Exception
      */
     @Test
@@ -99,8 +77,8 @@ public class TestTradeController {
         request.setNeedEncrypt(true);
         OrderCancelbatchBean data = new OrderCancelbatchBean();
         List<Long> req = Lists.newArrayList();
-//        req.add(120778993690480640l);
-//        req.add(120778994701307904l);
+        req.add(120778993690480640l);
+        req.add(120778994701307904l);
         data.setOrderIds(req);
         request.setBizModel(data);
         ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
@@ -108,7 +86,7 @@ public class TestTradeController {
     }
 
     /**
-     * 查询订单详情   200
+     * Query order details
      * @throws Exception
      */
     @Test
@@ -125,7 +103,7 @@ public class TestTradeController {
     }
 
     /**
-     * 查询订单成交明细 200
+     * Query order transaction details
      * @throws Exception
      */
     @Test
@@ -136,14 +114,13 @@ public class TestTradeController {
         request.setNeedEncrypt(true);
         OrderInfoBean data = new OrderInfoBean();
         data.setOrderId(123590473188118528l);
-//        data.setOrderId(123384831831707648l);
         request.setBizModel(data);
         ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
         System.out.println(response.getBody());
     }
 
     /**
-     * 当前委托列表   200 值还需要再对应上，查询方法需要重新定义
+     * Current delegation list
      * @throws Exception
      */
     @Test
@@ -155,17 +132,14 @@ public class TestTradeController {
         OrderCurrentBean data = new OrderCurrentBean();
         data.setDirect("sell");
         data.setSymbol("btc2usd");
-//        data.setType("limit");
-//        data.setEndDate(65616516l);
-//        data.setStartDate(32513516l);
-//        data.setState("pre-submitted");
+        data.setType("limit");
         request.setBizModel(data);
         ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
         System.out.println(response.getBody());
     }
 
     /**
-     * 历史委托列表   200
+     * Historical delegation list
      * @throws Exception
      */
     @Test
@@ -179,10 +153,8 @@ public class TestTradeController {
         data.setRows(10);
         data.setDirect("buy");
         data.setSymbol("btc2usd");
-//        data.setType("limit");
-//        data.setEndDate(65616516l);
-//        data.setStartDate(32513516l);
-//        data.setState("pre-submitted,submitted");
+        data.setType("limit");
+        data.setState("pre-submitted,submitted");
         request.setBizModel(data);
         ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
         System.out.println(response.getBody());

@@ -5,9 +5,8 @@ import com.bitms.api.client.mapping.BitmsParser;
 import com.bitms.api.client.mapping.Converter;
 
 /**
- * 单个JSON对象解释器。
+ * A single JSON object interpreter.
  * 
- * @author playguy
  * @since 1.0, Apr 11, 2010
  */
 public class ObjectJsonParser<T extends BitmsResponse> implements BitmsParser<T>

@@ -1,9 +1,8 @@
 package com.bitms.api.client.tool;
 
 /**
- * 字符串工具类。
+ * String tool class.
  * 
- * @author playguy
  * @since 1.0, Sep 12, 2009
  */
 public abstract class StringUtils
@@ -13,7 +12,7 @@ public abstract class StringUtils
     }
     
     /**
-     * 检查指定的字符串是否为空。
+     * Check if the specified string is empty.
      * <ul>
      * <li>SysUtils.isEmpty(null) = true</li>
      * <li>SysUtils.isEmpty("") = true</li>
@@ -21,7 +20,7 @@ public abstract class StringUtils
      * <li>SysUtils.isEmpty("abc") = false</li>
      * </ul>
      * 
-     * @param value 待检查的字符串
+     * @param value String to be checked
      * @return true/false
      */
     public static boolean isEmpty(String value)
@@ -36,7 +35,7 @@ public abstract class StringUtils
     }
     
     /**
-     * 检查对象是否为数字型字符串,包含负数开头的。
+     * Checks if the object is a numeric string containing a negative number.
      */
     public static boolean isNumeric(Object obj)
     {
@@ -54,7 +53,7 @@ public abstract class StringUtils
     }
     
     /**
-     * 检查指定的字符串列表是否不为空。
+     * Checks if the specified string list is not empty.
      */
     public static boolean areNotEmpty(String ... values)
     {
@@ -74,7 +73,7 @@ public abstract class StringUtils
     }
     
     /**
-     * 把通用字符编码的字符串转化为汉字编码。
+     * Converts a universally encoded string into a Chinese character encoding.
      */
     public static String unicodeToChinese(String unicode)
     {
@@ -90,7 +89,7 @@ public abstract class StringUtils
     }
     
     /**
-     * 过滤不可见字符
+     * Filter invisible characters
      */
     public static String stripNonValidXMLCharacters(String input)
     {

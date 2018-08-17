@@ -14,9 +14,8 @@ import org.junit.Test;
 import java.util.Map;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 账户测试类
+ * @discription : Account test class
  * @create : 2018-07-07-14
  **/
 public class TestAccountController {
@@ -25,11 +24,11 @@ public class TestAccountController {
 
     //Bitms
     private String apiKey = BitmsConst.apiKey;
-    //加签私钥
+    //private key
     private String priKey = BitmsConst.priKey;
 
     /**
-     * 获取用户信息
+     * Get user information
      * @throws Exception
      */
     @Test

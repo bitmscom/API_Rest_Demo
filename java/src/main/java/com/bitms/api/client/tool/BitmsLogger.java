@@ -20,10 +20,10 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 
 /**
- * 客户端日志
- * 通讯错误格式：time^_^sdk^_^app^_^ip^_^os^_^sdk^_^url^responseCode
- * 业务错误格式：time^_^response
- */
+  * Client log
+  * Communication error format: time^_^sdk^_^app^_^ip^_^os^_^sdk^_^url^responseCode
+  * Business error format: time^_^response
+  */
 public class BitmsLogger
 {
     private static final Log clog             = LogFactory.getLog("sdk.comm.err");
@@ -61,10 +61,10 @@ public class BitmsLogger
     {
         BitmsLogger.ip = ip;
     }
-    
+
     /**
-     * 通讯错误日志
-     */
+      * Communication error log
+      */
     public static void logCommError(Exception e, HttpURLConnection conn, String appKey, String method, byte[] content)
     {
         if (!needEnableLogger) { return; }
@@ -81,7 +81,7 @@ public class BitmsLogger
     }
     
     /**
-     * 通讯错误日志
+     * Communication error log
      */
     public static void logCommError(Exception e, String url, String appKey, String method, byte[] content)
     {
@@ -99,7 +99,7 @@ public class BitmsLogger
     }
     
     /**
-     * 通讯错误日志
+     * Communication error log
      */
     public static void logCommError(Exception e, HttpURLConnection conn, String appKey, String method, Map<String, String> params)
     {
@@ -114,7 +114,7 @@ public class BitmsLogger
     }
     
     /**
-     * 通讯错误日志
+     * Communication error log
      */
     private static void logCommError(Exception e, HttpURLConnection conn, String appKey, String method, String content)
     {
@@ -123,7 +123,7 @@ public class BitmsLogger
     }
     
     /**
-     * 通讯错误日志
+     * Communication error log
      */
     private static void logCommError(Exception e, String url, String appKey, String method, String content)
     {
@@ -132,7 +132,7 @@ public class BitmsLogger
     }
     
     /**
-     * 通讯错误日志
+     * Communication error log
      */
     private static void _logCommError(Exception e, HttpURLConnection conn, String url, String appKey, String method, Map<String, String> params)
     {
@@ -193,7 +193,7 @@ public class BitmsLogger
     }
     
     /**
-     * 业务/系统错误日志
+     * Business / System Error Log
      */
     public static void logBizDebug(String rsp)
     {
@@ -211,7 +211,7 @@ public class BitmsLogger
     }
     
     /**
-     * 业务/系统错误日志
+     * Business / System Error Log
      */
     public static void logBizError(String rsp)
     {
@@ -226,7 +226,7 @@ public class BitmsLogger
     }
     
     /**
-     * 业务/系统错误日志
+     * Business / System Error Log
      */
     public static void logBizError(Throwable t)
     {
@@ -235,7 +235,7 @@ public class BitmsLogger
     }
     
     /**
-     * 发生特别错误时记录完整错误现场
+     * Record the complete error site when a special error occurs
      */
     public static void logErrorScene(Map<String, Object> rt, BitmsResponse tRsp, String appSecret)
     {
@@ -291,7 +291,7 @@ public class BitmsLogger
     }
     
     /**
-     * 开启DEBUG级别日志（仅针对JDK14LOGGER，LOG4J请自行修改配置文件）
+     * Open the DEBUG level log (only for JDK14LOGGER, LOG4J please modify the configuration file yourself)
      * 
      * @param isEnabled
      */

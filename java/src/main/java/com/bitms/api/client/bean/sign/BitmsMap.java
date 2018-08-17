@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 纯字符串字典结构。
+ * A pure string dictionary structure.
  * 
- * @author playguy
  * @since 1.0, Sep 13, 2009
  */
 public class BitmsMap extends HashMap<String, String>

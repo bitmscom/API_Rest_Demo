@@ -16,9 +16,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
- * 系统工具类。
+ * System tool class.
  * 
- * @author playguy
  * @since 1.0, Sep 12, 2009
  */
 public abstract class BitmsUtils
@@ -30,9 +29,9 @@ public abstract class BitmsUtils
     }
     
     /**
-     * 获取文件的真实后缀名。目前只支持JPG, GIF, PNG, BMP四种图片文件。
+     * Get the real suffix of the file. Currently only supports JPG, GIF, PNG, BMP four image files.
      * 
-     * @param bytes 文件字节流
+     * @param bytes File byte stream
      * @return JPG, GIF, PNG or null
      */
     public static String getFileSuffix(byte[] bytes)
@@ -59,13 +58,13 @@ public abstract class BitmsUtils
             return null;
         }
     }
-    
+
     /**
-     * 获取文件的真实媒体类型。目前只支持JPG, GIF, PNG, BMP四种图片文件。
-     * 
-     * @param bytes 文件字节流
-     * @return 媒体类型(MEME-TYPE)
-     */
+      * Get the real media type of the file. Currently only supports JPG, GIF, PNG, BMP four image files.
+      *
+      * @param bytes file byte stream
+      * @return Media Type (MEME-TYPE)
+      */
     public static String getMimeType(byte[] bytes)
     {
         String suffix = getFileSuffix(bytes);
@@ -92,14 +91,14 @@ public abstract class BitmsUtils
         }
         return mimeType;
     }
-    
+
     /**
-     * 清除字典中值为空的项。
-     * 
-     * @param <V> 泛型
-     * @param map 待清除的字典
-     * @return 清除后的字典
-     */
+      * Clear items with empty values in the dictionary.
+      *
+      * @param <V> Generics
+      * @param map dictionary to be cleared
+      * @return Cleared dictionary
+      */
     public static <V> Map<String, V> cleanupMap(Map<String, V> map)
     {
         if (map == null || map.isEmpty()) { return null; }
@@ -114,13 +113,13 @@ public abstract class BitmsUtils
         }
         return result;
     }
-    
+
     /**
-     * 把JSON字符串转化为Map结构。
-     * 
-     * @param body JSON字符串
-     * @return Map结构
-     */
+      * Convert JSON strings to Map structures.
+      *
+      * @param body JSON string
+      * @return Map structure
+      */
     public static Map<?, ?> parseJson(String body)
     {
         JSONReader jr = new JSONValidatingReader();
@@ -134,15 +133,15 @@ public abstract class BitmsUtils
             return null;
         }
     }
-    
+
     /**
-     * 把JSON字符串解释为对象结构。
-     * 
-     * @param <T> API响应类型
-     * @param json JSON字符串
-     * @param clazz API响应类
-     * @return API响应对象
-     */
+      * Interpret JSON strings as object structures.
+      *
+      * @param <T> API response type
+      * @param json JSON string
+      * @param clazz API response class
+      * @return API response object
+      */
     public static <T extends BitmsResponse> T parseResponse(String json, Class<T> clazz) throws ApiException
     {
         ObjectJsonParser<T> parser = new ObjectJsonParser<T>(clazz);
@@ -150,7 +149,7 @@ public abstract class BitmsUtils
     }
     
     /**
-     * 获取本机的网络IP
+     * Get the network IP of this machine
      */
     public static String getLocalNetWorkIp()
     {
@@ -160,10 +159,10 @@ public abstract class BitmsUtils
             Enumeration<NetworkInterface> netInterfaces = NetworkInterface.getNetworkInterfaces();
             InetAddress ip = null;
             while (netInterfaces.hasMoreElements())
-            {// 遍历所有的网卡
+            {// Traverse all network cards
                 NetworkInterface ni = netInterfaces.nextElement();
                 if (ni.isLoopback() || ni.isVirtual())
-                {// 如果是回环和虚拟网络地址的话继续
+                {// If it is a loopback and virtual network address, continue
                     continue;
                 }
                 Enumeration<InetAddress> addresss = ni.getInetAddresses();
@@ -171,7 +170,7 @@ public abstract class BitmsUtils
                 {
                     InetAddress address = addresss.nextElement();
                     if (address instanceof Inet4Address)
-                    {// 这里暂时只获取ipv4地址
+                    {// Here only temporarily get the ipv4 address
                         ip = address;
                         break;
                     }

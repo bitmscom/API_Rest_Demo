@@ -4,9 +4,8 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 用户信息测试类
+ * @discription : User information test class
  * @create : 2018-07-06-16
  **/
 public class UserInfoTest extends BitmsObject {

@@ -12,9 +12,8 @@ import com.bitms.api.client.trade.fund.bean.*;
 import org.junit.Test;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 资产测试类
+ * @discription : Asset test class
  * @create : 2018-07-07-14
  **/
 public class TestFundController{
@@ -23,10 +22,10 @@ public class TestFundController{
 
     //Bitms
     private String apiKey = BitmsConst.apiKey;
-    //加签私钥
+    //private key
     private String priKey = BitmsConst.priKey;
     /**
-     * 纯正现货账户   200
+     * Pure spot account
      *
      * @throws Exception
      */
@@ -44,7 +43,7 @@ public class TestFundController{
     }
 
     /**
-     * 杠杆现货账户   200
+     * Leveraged spot account
      *
      * @throws Exception
      */
@@ -62,7 +61,7 @@ public class TestFundController{
     }
 
     /**
-     * 杠杆账户信息   200
+     * Leverage account information
      *
      * @throws Exception
      */
@@ -80,7 +79,7 @@ public class TestFundController{
     }
 
     /**
-     * 提币提现申请   bitms
+     * Coin withdrawal request
      *
      * @throws Exception
      */
@@ -101,7 +100,7 @@ public class TestFundController{
     }
 
     /**
-     * 提币取消 200
+     * Coin cancellation
      *
      * @throws Exception
      */
@@ -119,7 +118,7 @@ public class TestFundController{
     }
 
     /**
-     * 提币提现记录   200
+     * Cash withdrawal record
      *
      * @throws Exception
      */
@@ -137,7 +136,7 @@ public class TestFundController{
     }
 
     /**
-     * 充值记录 200
+     * Recharge record
      *
      * @throws Exception
      */

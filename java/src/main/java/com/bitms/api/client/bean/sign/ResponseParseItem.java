@@ -8,21 +8,20 @@ import java.io.Serializable;
 
 /**
  * 
- * @author playguy
- * @version $Id: EncryptResponseItem.java, v 0.1 2016-3-28 下午4:34:57 playguy Exp $
+ * @version $Id: EncryptResponseItem.java, v 0.1 2016-3-28 下午4:34:57 Exp $
  */
 public class ResponseParseItem implements Serializable
 {
     /**  */
     private static final long serialVersionUID = -27707404159419651L;
     
-    /** 加密节点开始 */
+    /** Encrypted node starts */
     private int               startIndex       = -1;
     
-    /** 加密节点结束 */
+    /** Encrypted node ends */
     private int               endIndex         = -1;
     
-    /** 加密内容 */
+    /** Encrypted content */
     private String            encryptContent   = null;
     
     /**

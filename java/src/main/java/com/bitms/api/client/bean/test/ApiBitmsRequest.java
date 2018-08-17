@@ -9,7 +9,7 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import java.util.Map;
 
 /**
- * 基础的请求对象
+ * Basic request object
  * 
  * @author auto create
  * @since 1.0, 2017-07-20 10:41:44
@@ -24,27 +24,27 @@ public class ApiBitmsRequest implements ApiBasicRequest<ApiResponse>
     private BitmsMap udfParams;
 
     /**
-     * 终端类型
+     * terminal type
      */
     private String      terminalType;
     
     /**
-     * 终端信息
+     * Terminal information
      */
     private String      terminalInfo;
 
     /**
-     * 是否加密
+     * Whether to encrypt
      */
     private boolean     needEncrypt = true;
     
     /**
-     * 业务对象
+     * Business object
      */
     private BitmsObject bizModel    = null;
     
     /**
-     * 请求内容
+     * Request content
      */
     private String      content;
     
@@ -99,16 +99,15 @@ public class ApiBitmsRequest implements ApiBasicRequest<ApiResponse>
         }
         return txtParams;
     }
-    
-    public void putOtherTextParam(String key, String value)
-    {
-        if (this.udfParams == null)
-        {
-            this.udfParams = new BitmsMap();
-        }
-        this.udfParams.put(key, value);
+
+    public BitmsMap getUdfParams() {
+        return udfParams;
     }
-    
+
+    public void setUdfParams(BitmsMap udfParams) {
+        this.udfParams = udfParams;
+    }
+
     public Class<ApiResponse> getResponseClass()
     {
         return ApiResponse.class;

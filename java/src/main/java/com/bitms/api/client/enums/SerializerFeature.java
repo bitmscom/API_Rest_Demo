@@ -16,7 +16,7 @@
 package com.bitms.api.client.enums;
 
 /**
- * @author wenshao[szujobs@hotmail.com]
+ * @author wenshao
  */
 public enum SerializerFeature {
     QuoteFieldNames,
@@ -29,11 +29,11 @@ public enum SerializerFeature {
      */
     WriteMapNullValue,
     /**
-     * 用枚举toString()值输出
+     * Output with enumeration toString() value
      */
     WriteEnumUsingToString,
     /**
-     * 用枚举name()输出
+     * Use enumeration name () output
      */
     WriteEnumUsingName,
     /**
@@ -79,7 +79,7 @@ public enum SerializerFeature {
     WriteClassName,
 
     /**
-     * 将Long输出为String
+     * Output Long as String
      */
     WriterLongToString,
 

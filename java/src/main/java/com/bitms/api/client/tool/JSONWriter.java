@@ -179,10 +179,10 @@ public class JSONWriter
             for (int i = 0; i < ff.length; ++i)
             {
                 Field field = ff[i];
-                // 获取注解
+                // Get annotations
                 ApiField jsonField = field.getAnnotation(ApiField.class);
                 ApiListField listField = field.getAnnotation(ApiListField.class);
-                // 优先处理列表类型注解,非列表类型才处理字段注解
+                // Prioritize list type annotations, non-list types handle field annotations
                 if (listField != null)
                 {
                     PropertyDescriptor pd = new PropertyDescriptor(field.getName(), object.getClass());

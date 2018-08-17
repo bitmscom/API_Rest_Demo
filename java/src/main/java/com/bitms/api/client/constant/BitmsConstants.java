@@ -5,18 +5,17 @@
 package com.bitms.api.client.constant;
 
 /**
- * BITMS常量定义
- * @author playguy
+ * API constant definition
  */
 public class BitmsConstants
 {
     /**
-     * sha128WithRsa 算法请求类型
+     * sha128WithRsa algorithm request type
      */
     public static final String SIGN_TYPE_RSA             = "RSA";
     
     /**
-     * sha256WithRsa 算法请求类型
+     * sha256WithRsa algorithm request type
      */
     public static final String SIGN_TYPE_RSA2            = "RSA2";
     

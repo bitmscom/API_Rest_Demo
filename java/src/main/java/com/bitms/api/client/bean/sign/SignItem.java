@@ -7,9 +7,8 @@ package com.bitms.api.client.bean.sign;
 import java.io.Serializable;
 
 /**
- *  签名类型
- * @author jie.hua
- * @version $Id: SignItem.java, v 0.1 2015-4-21 下午2:11:37 playguy Exp $
+ *  Signature type
+ * @version $Id: SignItem.java, v 0.1 2015-4-21 下午2:11:37 Exp $
  */
 public class SignItem implements Serializable
 {
@@ -17,12 +16,12 @@ public class SignItem implements Serializable
     private static final long serialVersionUID = 6531196726066096786L;
     
     /**
-     * 签名源串
+     * Signature source string
      */
     private String            signSourceDate;
     
     /**
-     * 签名
+     * signature
      */
     private String            sign;
     

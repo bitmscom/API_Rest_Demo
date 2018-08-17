@@ -5,46 +5,45 @@ import com.bitms.api.client.exception.ApiException;
 import java.util.List;
 
 /**
- * 格式转换器。
+ * Format converter.
  *
- * @author playguy
  * @since 1.0, Apr 11, 2010
  */
 public interface Reader {
     /**
-     * 判断返回结果是否包含指定的属性。
-     *
-     * @param name 属性名称
-     * @return true/false
-     */
+      * Determines if the returned result contains the specified attribute.
+      *
+      * @param name attribute name
+      * @return true/false
+      */
     boolean hasReturnField(Object name);
 
     /**
-     * 读取单个基本对象。
-     *
-     * @param name 映射名称
-     * @return 基本对象值
-     */
+      * Read a single base object.
+      *
+      * @param name map name
+      * @return base object value
+      */
     Object getPrimitiveObject(Object name);
 
     /**
-     * 读取单个自定义对象。
-     *
-     * @param name 映射名称
-     * @param type 映射类型
-     * @return 映射类型的实例
-     * @throws ApiException
-     */
+      * Read a single custom object.
+      *
+      * @param name map name
+      * @param type mapping type
+      * @return instance of mapping type
+      * @throws ApiException
+      */
     Object getObject(Object name, Class<?> type) throws ApiException;
 
     /**
-     * 读取多个对象的值。
-     *
-     * @param listName 列表名称
-     * @param itemName 映射名称
-     * @param subType  嵌套映射类型
-     * @return 嵌套映射类型实例列表
-     * @throws ApiException
-     */
+      * Read the values of multiple objects.
+      *
+      * @param listName list name
+      * @param itemName map name
+      * @param subType nested map type
+      * @return nested map type instance list
+      * @throws ApiException
+      */
     List<?> getListObjects(Object listName, Object itemName, Class<?> subType) throws ApiException;
 }

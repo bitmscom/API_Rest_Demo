@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * API基础响应信息。
+ * API basic response information.
  * 
  * @author fengsheng
  */
@@ -25,7 +25,7 @@ public class BitmsResponse implements Serializable
     private Map<String, String> params;
 
     /**
-     * 废弃方法，请使用getCode替换
+     * Discard method, please use getCode to replace
      *
      * @return
      */
@@ -36,7 +36,7 @@ public class BitmsResponse implements Serializable
     }
 
     /**
-     * 废弃方法，请使用setCode替换
+     * Discard method, please use setCode to replace
      *
      * @param errorCode
      */

@@ -6,9 +6,8 @@ import com.bitms.api.client.constant.BitmsConst;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 提币记录bean
+ * @discription : Coin recording bean
  * @create : 2018-07-07-16
  **/
 public class WithdrawRecordBean extends BitmsObject {

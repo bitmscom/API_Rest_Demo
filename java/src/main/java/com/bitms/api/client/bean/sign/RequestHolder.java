@@ -1,22 +1,22 @@
 package com.bitms.api.client.bean.sign;
 
 /**
- * 请求参数头文件
+ * Request parameter header file
  */
 public class RequestHolder
 {
     /**
-     * 公共必填参数
+     * Public required parameter
      */
     private BitmsMap protocalMustParams;
     
     /**
-     * 公共选填参数
+     * Public optional parameter
      */
     private BitmsMap protocalOptParams;
     
     /**
-     * 业务请求参数
+     * Business request parameter
      */
     private BitmsMap applicationParams;
     

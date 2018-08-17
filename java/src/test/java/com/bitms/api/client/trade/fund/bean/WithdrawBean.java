@@ -5,9 +5,8 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 提币提现申请bean
+ * @discription : Coin withdrawal requesting bean
  * @create : 2018-07-05-10
  **/
 public class WithdrawBean extends BitmsObject {

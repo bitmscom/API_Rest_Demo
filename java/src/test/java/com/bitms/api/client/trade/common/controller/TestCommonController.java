@@ -5,9 +5,8 @@ import com.bitms.api.client.tool.HttpUtils;
 import org.junit.Test;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 公共controller测试类
+ * @discription : Public controller test class
  * @create : 2018-07-07-14
  **/
 public class TestCommonController {
@@ -15,7 +14,7 @@ public class TestCommonController {
     private String root = BitmsConst.ROOT;
 
     /**
-     * 测试获取系统时间
+     * Test acquisition system time
      */
     @Test
     public void testGetTimestamp() {
@@ -24,7 +23,7 @@ public class TestCommonController {
     }
 
     /**
-     * 测试获取所有币种
+     * Test to get all currencies
      */
     @Test
     public void testGetCurrencys() {
@@ -33,7 +32,7 @@ public class TestCommonController {
     }
 
     /**
-     * 测试获取所有交易对
+     * Test to get all transaction pairs
      */
     @Test
     public void testGetSymbols() {

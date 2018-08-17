@@ -14,10 +14,9 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *  加密工具
+ *  Encryption tool
  * 
- * @author playguy
- * @version $Id: Encrypt.java, v 0.1 2016-3-28 下午5:14:12 playguy Exp $
+ * @version $Id: Encrypt.java, v 0.1 2016-3-28 下午5:14:12 Exp $
  */
 public class Encrypt
 {
@@ -30,7 +29,7 @@ public class Encrypt
     private final static String[] HEX_DIGITS      = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
     
     /**
-     *   加密
+     *   encryption
      *
      * @param content
      * @param encryptType
@@ -55,12 +54,12 @@ public class Encrypt
         }
         else
         {
-            throw new ApiException("当前不支持该算法类型：encrypeType=" + encryptType);
+            throw new ApiException("This algorithm type is currently not supported：encrypeType=" + encryptType);
         }
     }
     
     /**
-     *  解密
+     *  Decrypt
      *
      * @param content
      * @param encryptType
@@ -85,17 +84,17 @@ public class Encrypt
         }
         else
         {
-            throw new ApiException("当前不支持该算法类型：encrypeType=" + encryptType);
+            throw new ApiException("This algorithm type is currently not supported：encrypeType=" + encryptType);
         }
     }
-    
+
     /**
-     * 使用HmacSHA1进行加密
-     *
-     * @param data 需加密数据
-     * @param key  加密Key
-     * @return
-     */
+      * Encrypt using HmacSHA1
+      *
+      * @param data needs to encrypt data
+      * @param key Encryption Key
+      * @return
+      */
     public static String hmacSha1(final String data, final String key) throws Exception
     {
         try
@@ -111,14 +110,14 @@ public class Encrypt
             throw new Exception(e.getLocalizedMessage());
         }
     }
-    
+
     /**
-     * AES加密为base 64 code
-     * @param content 待加密的内容
-     * @param encryptKey 加密密钥
-     * @return 加密后的base 64 code
-     * @throws Exception
-     */
+      * AES encryption is base 64 code
+      * @param content content to be encrypted
+      * @param encryptKey encryption key
+      * @return Encrypted base 64 code
+      * @throws Exception
+      */
     public static String aesEncrypt(String content, String encryptKey) throws Exception
     {
         SecretKeySpec skeySpec = getKey(encryptKey);
@@ -128,14 +127,14 @@ public class Encrypt
         byte[] encrypted = cipher.doFinal(content.getBytes("UTF-8"));
         return Base64.encodeStr(encrypted);
     }
-    
+
     /**
-     * 将base 64 code AES解密
-     * @param content 待解密的base 64 code
-     * @param decryptKey 解密密钥
-     * @return 解密后的string
-     * @throws Exception
-     */
+      * Decrypt base 64 code AES
+      * @param content base 64 code to be decrypted
+      * @param decryptKey decryption key
+      * @return decrypted string
+      * @throws Exception
+      */
     public static String aesDecrypt(String content, String decryptKey) throws Exception
     {
         SecretKeySpec skeySpec = getKey(decryptKey);
@@ -150,7 +149,7 @@ public class Encrypt
     private static SecretKeySpec getKey(String strKey)
     {
         byte[] arrBTmp = strKey.getBytes();
-        byte[] arrB = new byte[16]; // 创建一个空的16位字节数组（默认值为0）
+        byte[] arrB = new byte[16]; // Create an empty 16-bit byte array (default is 0)
         for (int i = 0; i < arrBTmp.length && i < arrB.length; i++)
         {
             arrB[i] = arrBTmp[i];

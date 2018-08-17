@@ -7,9 +7,8 @@ import com.bitms.api.client.service.ApiBitmsParser;
 import com.bitms.api.client.service.ApiConverter;
 
 /**
- * 单个JSON对象解释器。
+ * a single JSON object interpreter。
  * 
- * @author playguy
  * @since 1.0, Apr 11, 2010
  */
 public class ApiObjectJsonParser<T extends ApiResponse> implements ApiBitmsParser<T>

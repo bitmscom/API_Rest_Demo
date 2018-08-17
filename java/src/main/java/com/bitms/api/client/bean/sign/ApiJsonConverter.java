@@ -14,9 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * JSON格式转换器。
+ * JSON format converter。
  * 
- * @author playguy
  * @since 1.0, Apr 11, 2010
  */
 public class ApiJsonConverter implements ApiConverter
@@ -32,16 +31,16 @@ public class ApiJsonConverter implements ApiConverter
         }
         return null;
     }
-    
+
     /**
-     * 把JSON格式的数据转换为对象。
-     *
-     * @param <T> 泛型领域对象
-     * @param json JSON格式的数据
-     * @param clazz 泛型领域类型
-     * @return 领域对象
-     * @throws ApiException
-     */
+      * Convert data in JSON format to objects.
+      *
+      * @param <T> generic domain object
+      * @param json data in JSON format
+      * @param clazz generic field type
+      * @return domain object
+      * @throws ApiException
+      */
     public <T> T fromJson(final Map<?, ?> json, Class<T> clazz) throws ApiException
     {
         return ApiConverters.convert(clazz, new Reader()
@@ -175,7 +174,7 @@ public class ApiJsonConverter implements ApiConverter
     }
     
     /**
-     *   获取签名源串内容
+     *   Get the signature source string content
      *
      *
      * @param body
@@ -195,7 +194,7 @@ public class ApiJsonConverter implements ApiConverter
     }
     
     /**
-     * 获取签名
+     * Get signature
      *
      * @param body
      * @return
@@ -220,7 +219,7 @@ public class ApiJsonConverter implements ApiConverter
     }
     
     /**
-     *  获取JSON响应加签内容串
+     *  Get the JSON response tag content string
      *
      * @param request
      * @param body
@@ -242,7 +241,7 @@ public class ApiJsonConverter implements ApiConverter
     
     /**
      * 
-     * 截取返回内容
+     * Intercept the return content
      * @param body
      * @param rootNode
      * @param indexOfRootNode

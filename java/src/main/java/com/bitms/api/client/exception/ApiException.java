@@ -5,8 +5,7 @@
 package com.bitms.api.client.exception;
 
 /**
- * 
- * @author playguy
+ * @version $Id: EncryptResponseItem.java, v 0.1 2016-3-28 下午4:34:57 Exp $
  */
 public class ApiException extends RuntimeException
 {

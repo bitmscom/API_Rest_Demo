@@ -5,9 +5,8 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 取消提币bean
+ * @discription : Cancel the currency bean
  * @create : 2018-07-07-15
  **/
 public class WithdrawCancelBean extends BitmsObject {

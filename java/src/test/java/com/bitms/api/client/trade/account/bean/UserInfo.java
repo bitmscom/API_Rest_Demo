@@ -1,9 +1,8 @@
 package com.bitms.api.client.trade.account.bean;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 用户信息
+ * @discription : User Info
  * @create : 2018-07-05-19
  **/
 public class UserInfo {

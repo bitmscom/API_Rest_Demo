@@ -3,97 +3,96 @@ package com.bitms.api.client.bean.sign;
 import java.util.Map;
 
 /**
- * 请求接口。
+ * Request interface。
  * 
- * @author playguy
  * @since 1.0, Sep 12, 2009
  */
 public interface BasicRequest<T extends BitmsResponse>
 {
     /**
-     * 获取所有的Key-Value形式的文本请求参数集合。其中：
-     * <ul>
-     * <li>Key: 请求参数名</li>
-     * <li>Value: 请求参数值</li>
-     * </ul>
-     * 
-     * @return 文本请求参数集合
-     */
+      * Get all the set of text request parameters in the form of Key-Value. among them:
+      * <ul>
+      * <li>Key: Request parameter name</li>
+      * <li>Value: request parameter value</li>
+      * </ul>
+      *
+      * @return text request parameter set
+      */
     Map<String, String> getTextParams();
-    
+
     /**
-     * 得到当前接口的版本
-     * 
-     * @return API版本
-     */
+      * Get the version of the current interface
+      *
+      * @return API version
+      */
     String getApiVersion();
-    
+
     /**
-     * 设置当前API的版本信息
-     * 
-     * @param apiVersion API版本
-     */
+      * Set the version information of the current API
+      *
+      * @param apiVersion API version
+      */
     void setApiVersion(String apiVersion);
-    
+
     /**
-     * 获取终端类型
-     * 
-     * @return 终端类型
-     */
+      * Get terminal type
+      *
+      * @return terminal type
+      */
     String getTerminalType();
-    
+
     /**
-     * 设置终端类型
-     * 
-     * @param terminalType 终端类型
-     */
+      * Set the terminal type
+      *
+      * @param terminalType terminal type
+      */
     void setTerminalType(String terminalType);
-    
+
     /**
-     * 获取终端信息
-     * 
-     * @return 终端信息
-     */
+      * Get terminal information
+      *
+      * @return terminal information
+      */
     String getTerminalInfo();
-    
+
     /**
-     * 设置终端信息
-     * 
-     * @param terminalInfo 终端信息
-     */
+      * Set terminal information
+      *
+      * @param terminalInfo terminal information
+      */
     void setTerminalInfo(String terminalInfo);
-    
+
     /**
-     * 得到当前API的响应结果类型
-     * 
-     * @return 响应类型
-     */
+      * Get the response type of the current API
+      *
+      * @return response type
+      */
     Class<T> getResponseClass();
-    
+
     /**
-     * 判断是否需要加密
-     * 
-     * @return
-     */
+      * Determine if encryption is required
+      *
+      * @return
+      */
     boolean isNeedEncrypt();
-    
+
     /**
-     * 设置请求是否需要加密
-     * 
-     * @param needEncrypt
-     */
+      * Set whether the request requires encryption
+      *
+      * @param needEncrypt
+      */
     void setNeedEncrypt(boolean needEncrypt);
-    
+
     /**
-     * 获取业务实体
-     * @return
-     */
+      * Get business entity
+      * @return
+      */
     BitmsObject getBizModel();
-    
+
     /**
-     * 设置业务实体，如需使用此方法，请勿直接设置biz_content
-     * 
-     * @param bizModel
-     */
+      * Set the business entity, if you want to use this method, please do not set biz_content directly
+      *
+      * @param bizModel
+      */
     void setBizModel(BitmsObject bizModel);
 }

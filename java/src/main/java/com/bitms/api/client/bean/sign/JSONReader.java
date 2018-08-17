@@ -11,8 +11,8 @@ import java.util.Map;
 
 /**
  * 
- * 
- * 不能直接使用JSONReader，请用JSONValidatingReader，所以这里改为abstract修饰。
+ *
+ * You can't use JSONReader directly, please use JSONValidatingReader, so change it to abstract.
  */
 public abstract class JSONReader
 {

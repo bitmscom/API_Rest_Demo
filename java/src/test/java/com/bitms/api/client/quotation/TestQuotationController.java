@@ -5,45 +5,45 @@ import com.bitms.api.client.tool.HttpUtils;
 import org.junit.Test;
 
 /**
- * 公共行情测试类
+ * Quotetion test
  */
 public class TestQuotationController {
 
-    private String root = "http://localhost:8081/api/v1/";
+    private String root = "http://api.bitms.com/api/v1/";
 
     /**
-     * 测试获取公共行情
+     * Test to get public quotes
      */
     @Test
     public void testTicker() {
-        String json = HttpUtils.get(root + "ticker?symbol=biex2eth&");
+        String json = HttpUtils.get(root + "ticker?symbol=btc2usd&");
         System.out.println(json);
     }
 
     /**
-     * 测试K线行情
+     * Test K-line market
      */
     @Test
     public void testKline() {
-        String json = HttpUtils.get(root + "ticker?symbol=biex2eth&type=hour");
+        String json = HttpUtils.get(root + "ticker?symbol=btc2usd&type=hour");
         System.out.println(json);
     }
 
     /**
-     * 测试盘口行情
+     * Test depth market
      */
     @Test
     public void testDepth() {
-        String json = HttpUtils.get(root + "depth?symbol=biex2eth&");
+        String json = HttpUtils.get(root + "depth?symbol=btc2usd&");
         System.out.println(json);
     }
 
     /**
-     * 测试成交记录
+     * Test transaction record
      */
     @Test
     public void testTrades() {
-        String json = HttpUtils.get(root + "trades?symbol=biex2eth&");
+        String json = HttpUtils.get(root + "trades?symbol=btc2usd&");
         System.out.println(json);
     }
 

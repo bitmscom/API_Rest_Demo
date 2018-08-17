@@ -7,46 +7,49 @@ import com.bitms.api.client.bean.sign.SignItem;
 import com.bitms.api.client.exception.ApiException;
 
 /**
- * 响应解释器接口。响应格式可以是JSON, XML等等。
- * 
- * @author playguy
- * @since 1.0, Apr 11, 2010
+ *   * Response interpreter interface. The response format can be JSON, XML, and so on.
+ *   *
+ *   * @since 1.0, Apr 11, 2010
+ *  
  */
-public interface ApiBitmsParser<T extends ApiResponse>
-{
+public interface ApiBitmsParser<T extends ApiResponse> {
     /**
-     * 把响应字符串解释成相应的领域对象。
-     * 
-     * @param rsp 响应字符串
-     * @return 领域对象
+     *       * Interpret the response string as the corresponding domain object.
+     *       *
+     *       * @param rsp response string
+     *       * @return domain object
+     *      
      */
     T parse(String rsp) throws ApiException;
-    
+
     /**
-     * 获取响应类类型。
+     *       * Get the response class type.
+     *      
      */
     Class<T> getResponseClass() throws ApiException;
-    
+
     /**
-     * 获取响应内的签名数据
-     * 
-     * @param responseBody 响应字符串
-     * @return
-     * @throws ApiException
+     *       * Get the signature data in the response
+     *       *
+     *       * @param responseBody response string
+     *       * @return
+     *       * @throws ApiException
+     *      
      */
     SignItem getSignItem(ApiBasicRequest<?> request, String responseBody) throws ApiException;
-    
+
     /**
-     *  获取实际串：如果是加密内容则返回内容已经是解密后的实际内容了
-     * 
-     * @param request
-     * @param body
-     * @param format
-     * @param encryptType
-     * @param encryptKey
-     * @param charset
-     * @return
-     * @throws ApiException
+     *       * Get the actual string: If it is encrypted content, the returned content is already the actual content after decryption.
+     *       *
+     *       * @param request
+     *       * @param body
+     *       * @param format
+     *       * @param encryptType
+     *       * @param encryptKey
+     *       * @param charset
+     *       * @return
+     *       * @throws ApiException
+     *      
      */
     String encryptSourceData(ApiBasicRequest<?> request, String body, String format, String encryptType, String encryptKey, String charset) throws ApiException;
 }

@@ -5,9 +5,8 @@ import com.bitms.api.client.constant.BitmsConst;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 当前委托bean
+ * @discription : Current delegate bean
  * @create : 2018-07-07-17
  **/
 public class OrderCurrentBean extends BitmsObject {
@@ -26,12 +25,6 @@ public class OrderCurrentBean extends BitmsObject {
 
     @ApiField("direct")
     private String direct;
-
-    @ApiField("startDate")
-    private Long startDate;
-
-    @ApiField("endDate")
-    private Long endDate;
 
     @ApiField("state")
     private String state;
@@ -74,22 +67,6 @@ public class OrderCurrentBean extends BitmsObject {
 
     public void setDirect(String direct) {
         this.direct = direct;
-    }
-
-    public Long getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Long startDate) {
-        this.startDate = startDate;
-    }
-
-    public Long getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Long endDate) {
-        this.endDate = endDate;
     }
 
     public String getState() {

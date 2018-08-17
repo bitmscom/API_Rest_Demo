@@ -4,10 +4,9 @@ import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
 
 /**
- * @author : yukai
  * @version : 1.0
  * @program : com.bitms.api.client.trade.fund.bean
- * @discription : 纯正现货bean
+ * @discription : Pure spot bean
  * @create : 2018-07-25-15
  **/
 public class PureSpotBean extends BitmsObject{

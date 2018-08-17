@@ -6,15 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 数据结构属性注解。
- * 
- * @author playguy
- * @since 1.0, Apr 11, 2010
- */
+   * Data structure attribute annotations.
+   *
+   * @since 1.0, Apr 11, 2010
+   */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.FIELD})
 public @interface ApiField
 {
-    /** JSON属性映射名称 **/
+    /** JSON attribute mapping name **/
     String value() default "";
 }

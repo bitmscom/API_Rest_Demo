@@ -7,39 +7,38 @@ import com.bitms.api.client.mapping.ApiField;
 import java.math.BigDecimal;
 
 /**
- * @author : yukai
  * @version : 1.0
- * @discription : 下单bean
+ * @discription : Order bean
  * @create : 2018-07-07-16
  **/
 public class EntrustBean extends BitmsObject {
 
     /**
-     * 交易对
+     * Transaction pair
      */
     @ApiField("symbol")
     private String symbol;
 
     /**
-     * 委托类型
+     * Entrustment type
      */
     @ApiField("type")
     private String type;
 
     /**
-     * 委托方向
+     * Commission direction
      */
     @ApiField("direct")
     private String direct;
 
     /**
-     * 委托数量
+     * Number of orders
      */
     @ApiField("amount")
     private BigDecimal amount;
 
     /**
-     * 委托价格
+     * Commission price
      */
     @ApiField("price")
     private BigDecimal price;

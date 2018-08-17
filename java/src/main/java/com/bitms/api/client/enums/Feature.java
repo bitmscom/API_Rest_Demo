@@ -17,7 +17,7 @@ package com.bitms.api.client.enums;
 
 
 /**
- * @author wenshao[szujobs@hotmail.com]
+ * @author wenshao
  */
 public enum Feature {
     /**

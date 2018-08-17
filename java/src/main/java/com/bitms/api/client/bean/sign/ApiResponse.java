@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * API基础响应信息。
+ * API basic response information。
  *
  * @author fengsheng
  */
