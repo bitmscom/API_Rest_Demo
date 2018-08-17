@@ -1,10 +1,10 @@
 
-<br/>
-<br/>
-Bitms 为用户提供了新版api  Java使用示例  示例中包括行情和交易的api示例。<br/>
+
+Bitms 为用户提供了新版api  Java使用示例  示例中包括行情和交易的api示例。
 使用须知：<br/>
-     1、交易API调用请先配置BitmsConst.java  <br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String apiKey = "";  //唯一API证书密钥，用户可以至Bitms官网进行创建 <br/>
-       	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String priKey = "";  //用户私钥 <br/>
-	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String root = "https://api.bitms.com";<br/>  	
-Bitms 官网 : [https://www.bitms.com](https://www.bitms.com)
+     1、交易API调用请先配置BitmsConst.java  
+        String root = "https://api.bitms.com/api/v1";
+        String apiKey = "";  //唯一API证书密钥，用户可以至Bitms官网进行创建 
+        String priKey = "";  //用户私钥 
+	
+Bitms 官网 : https://www.bitms.com
