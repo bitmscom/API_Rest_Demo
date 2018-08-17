@@ -93,7 +93,7 @@ public class TestFundController{
         data.setAddress("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
         data.setAmount("0.01");
         data.setCurrency("btc");
-        data.setFundPwd("963852");
+        data.setFundPwd("123456");
         request.setBizModel(data);
         ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
         System.out.println(response.getBody());
