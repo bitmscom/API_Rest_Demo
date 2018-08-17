@@ -30,7 +30,7 @@ public class BitmsConst
      */
     public static final Integer  DEFAULT_PAGE_SIZE             = 10;
 
-    public static String ROOT = "http://api.bitms.com/api/v1/";
+    public static String ROOT = "https://api.bitms.com/api/v1/";
 
     //Bitms
     public static String apiKey = "8z4N6PF7qPD2VisGCgr5CkNzsWpzZRAevgfdTWLmXIeqVtRmfy1wWY4EcblG2hEF";
