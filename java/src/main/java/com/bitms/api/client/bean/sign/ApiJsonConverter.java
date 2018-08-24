@@ -4,8 +4,6 @@ import com.bitms.api.client.constant.BitmsConstants;
 import com.bitms.api.client.exception.ApiException;
 import com.bitms.api.client.mapping.ApiConverters;
 import com.bitms.api.client.mapping.Converter;
-import com.bitms.api.client.service.ApiConverter;
-import com.bitms.api.client.service.Reader;
 import com.bitms.api.client.tool.Encrypt;
 import com.bitms.api.client.tool.StringUtils;
 
@@ -138,13 +136,13 @@ public class ApiJsonConverter implements ApiConverter
      */
     public SignItem getSignItem(ApiBasicRequest<?> request, String responseBody) throws ApiException
     {
-        // 响应为空则直接返回
+        // Return directly if the response is empty
         if (StringUtils.isEmpty(responseBody)) { return null; }
         SignItem signItem = new SignItem();
-        // 获取签名
+        // Get signature
         String sign = getSign(responseBody);
         signItem.setSign(sign);
-        // 签名源串
+        // Signature source string
         String signSourceData = getSignSourceData(request, responseBody);
         signItem.setSignSourceDate(signSourceData);
         return signItem;
@@ -158,14 +156,14 @@ public class ApiJsonConverter implements ApiConverter
      */
     private String getSignSourceData(ApiBasicRequest<?> request, String body)
     {
-        // 加签源串起点
+        // Add source string starting point
         String rootNode = BitmsConstants.RESPONSE_KEY;
         int indexOfRootNode = body.indexOf(rootNode);
-        // 成功或者新版接口
+        // Successful or new interface
         if (indexOfRootNode > 0)
         {
             return parseSignSourceData(body, rootNode, indexOfRootNode);
-            // 老版本失败接口
+            // Old version failed interface
         }
         else
         {
@@ -184,11 +182,11 @@ public class ApiJsonConverter implements ApiConverter
      */
     private String parseSignSourceData(String body, String rootNode, int indexOfRootNode)
     {
-        // 第一个字母+长度+引号和分号
+        // First letter + length + quotation marks and semicolons
         int signDataStartIndex = indexOfRootNode + rootNode.length() + 2;
         int indexOfSign = body.indexOf("\"" + BitmsConstants.SIGN + "\"");
         if (indexOfSign < 0) { return null; }
-        // 签名前-逗号
+        // Pre-signature - comma
         int signDataEndIndex = indexOfSign - 1;
         return body.substring(signDataStartIndex, signDataEndIndex);
     }

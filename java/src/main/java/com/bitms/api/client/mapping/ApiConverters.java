@@ -3,7 +3,7 @@ package com.bitms.api.client.mapping;
 import com.bitms.api.client.bean.sign.BitmsResponse;
 import com.bitms.api.client.bean.sign.FieldMethod;
 import com.bitms.api.client.exception.ApiException;
-import com.bitms.api.client.service.Reader;
+import com.bitms.api.client.bean.sign.Reader;
 import com.bitms.api.client.tool.StringUtils;
 
 import java.beans.BeanInfo;

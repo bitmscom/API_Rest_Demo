@@ -1,8 +1,4 @@
-package com.bitms.api.client.service;
-
-import com.bitms.api.client.bean.sign.ApiBasicRequest;
-import com.bitms.api.client.bean.sign.ApiResponse;
-import com.bitms.api.client.bean.sign.FileItem;
+package com.bitms.api.client.bean.sign;
 
 import java.util.Map;
 

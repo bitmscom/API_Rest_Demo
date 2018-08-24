@@ -1,8 +1,10 @@
-package com.bitms.api.client.trade.fund.bean;
+package com.bitms.api.client.service.bean;
 
 
 import com.bitms.api.client.bean.sign.BitmsObject;
 import com.bitms.api.client.mapping.ApiField;
+
+import java.math.BigDecimal;
 
 /**
  * @version : 1.0
@@ -18,7 +20,7 @@ public class WithdrawBean extends BitmsObject {
     private String currency;
 
     @ApiField("amount")
-    private String amount;
+    private BigDecimal amount;
 
     @ApiField("fundPwd")
     private String fundPwd;
@@ -39,11 +41,11 @@ public class WithdrawBean extends BitmsObject {
         this.currency = currency;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

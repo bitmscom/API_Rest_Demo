@@ -1,9 +1,6 @@
-package com.bitms.api.client.service;
+package com.bitms.api.client.bean.sign;
 
 
-import com.bitms.api.client.bean.sign.ApiBasicRequest;
-import com.bitms.api.client.bean.sign.ApiResponse;
-import com.bitms.api.client.bean.sign.SignItem;
 import com.bitms.api.client.exception.ApiException;
 
 /**

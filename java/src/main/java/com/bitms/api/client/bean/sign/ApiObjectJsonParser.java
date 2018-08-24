@@ -3,8 +3,6 @@ package com.bitms.api.client.bean.sign;
 
 import com.bitms.api.client.exception.ApiException;
 import com.bitms.api.client.mapping.BitmsParser;
-import com.bitms.api.client.service.ApiBitmsParser;
-import com.bitms.api.client.service.ApiConverter;
 
 /**
  * a single JSON object interpreter。

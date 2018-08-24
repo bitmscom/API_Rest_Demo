@@ -1,4 +1,4 @@
-package com.bitms.api.client.trade.account.bean;
+package com.bitms.api.client.service.bean;
 
 /**
  * @version : 1.0

@@ -8,9 +8,10 @@ package com.bitms.api.client;
 import com.bitms.api.client.bean.sign.*;
 import com.bitms.api.client.constant.BitmsConstants;
 import com.bitms.api.client.exception.ApiException;
-import com.bitms.api.client.service.ApiBitmsParser;
-import com.bitms.api.client.service.ApiUploadRequest;
+import com.bitms.api.client.bean.sign.ApiBitmsParser;
+import com.bitms.api.client.bean.sign.ApiUploadRequest;
 import com.bitms.api.client.tool.*;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 import java.security.Security;
@@ -106,46 +107,44 @@ public class DefaultApiClient implements ApiClient {
     private <T extends ApiResponse> RequestHolder getRequestHolderWithSign(ApiBasicRequest<?> request, String authToken) throws ApiException {
         RequestHolder requestHolder = new RequestHolder();
         BitmsMap appParams = new BitmsMap(request.getTextParams());
-        // 仅当API包含biz_content参数且值为空时，序列化bizModel填充bizContent
+        // Serialize bizModel to fill bizContent only if the API contains the biz_content parameter and the value is empty
         try {
             if (request.getClass().getMethod("getContent") != null && StringUtils.isEmpty(appParams.get(BitmsConstants.CONTENT_KEY)) && request.getBizModel() != null) {
                 appParams.put(BitmsConstants.CONTENT_KEY, new JSONWriter().write(request.getBizModel(), true));
             }
         } catch (NoSuchMethodException e) {
-            // 找不到getContent则什么都不做
+            // Can't find getContent, do nothing
         } catch (SecurityException e) {
             BitmsLogger.logBizError(e);
         }
-        if (request.isNeedEncrypt()) {// 只有新接口和设置密钥才能支持加密
-            if (StringUtils.isEmpty(appParams.get(BitmsConstants.CONTENT_KEY))) {
-                throw new ApiException("当前API不支持加密请求");
+        if (request.isNeedEncrypt()) {// Only new interfaces and setup keys are required to support encryption
+            if (!StringUtils.isEmpty(appParams.get(BitmsConstants.CONTENT_KEY))) {
+                if (!StringUtils.areNotEmpty(this.encryptKey, this.encryptType)) {// 需要加密必须设置密钥和加密算法
+                    throw new ApiException("API requests require encryption, then you must set the key and key type ：encryptKey=" + encryptKey + ",encryptType=" + encryptType);
+                }
+                String  encryptContent = Encrypt.encryptContent(appParams.get(BitmsConstants.CONTENT_KEY), this.encryptType, this.encryptKey);
+                appParams.put(BitmsConstants.CONTENT_KEY, encryptContent);
             }
-            if (!StringUtils.areNotEmpty(this.encryptKey, this.encryptType)) {// 需要加密必须设置密钥和加密算法
-                throw new ApiException("API请求要求加密，则必须设置密钥和密钥类型：encryptKey=" + encryptKey + ",encryptType=" + encryptType);
-            }
-            String encryptContent = Encrypt.encryptContent(appParams.get(BitmsConstants.CONTENT_KEY), this.encryptType, this.encryptKey);
-            appParams.put(BitmsConstants.CONTENT_KEY, encryptContent);
         }
         if (!StringUtils.isEmpty(authToken)) appParams.put(BitmsConstants.AUTH_TOKEN, authToken);
-        requestHolder.setApplicationParams(appParams);// 业务请求参数
+        requestHolder.setApplicationParams(appParams);// Business request parameter
         if (StringUtils.isEmpty(charset)) charset = BitmsConstants.CHARSET_UTF8;
-        BitmsMap protocalMustParams = new BitmsMap();// 公共必填参数
+        BitmsMap protocalMustParams = new BitmsMap();// Public required parameter
         protocalMustParams.put(BitmsConstants.VERSION, request.getApiVersion());
         protocalMustParams.put(BitmsConstants.SIGN_TYPE, this.sign_type);
         protocalMustParams.put(BitmsConstants.TERMINAL_TYPE, request.getTerminalType());
         protocalMustParams.put(BitmsConstants.TERMINAL_INFO, request.getTerminalInfo());
         protocalMustParams.put(BitmsConstants.CHARSET, charset);
-        if (request.isNeedEncrypt()) {// 加密时将加密类型加入到必填参数中
+        if (request.isNeedEncrypt()) {// Add the encryption type to the required parameters when encrypting
             protocalMustParams.put(BitmsConstants.ENCRYPT_KEY, this.encryptKey);
         }
         protocalMustParams.put(BitmsConstants.TIMESTAMP, System.currentTimeMillis());
         protocalMustParams.put("api_key", api_key);
         requestHolder.setProtocalMustParams(protocalMustParams);
-        BitmsMap protocalOptParams = new BitmsMap();// 公共选填参数
+        BitmsMap protocalOptParams = new BitmsMap();// Public optional parameter
         protocalOptParams.put(BitmsConstants.FORMAT, format);
-//        protocalOptParams.put("api_key", api_key);
         requestHolder.setProtocalOptParams(protocalOptParams);
-        if (!StringUtils.isEmpty(this.sign_type)) {// 将签名加入公共必填参数中
+        if (!StringUtils.isEmpty(this.sign_type)) {// Add the signature to the public required parameter
             String signContent = Signature.getSignatureContent(requestHolder);
             protocalMustParams.put(BitmsConstants.SIGN, Signature.rsaSign(signContent, privateKey, charset, this.sign_type));
         } else {
@@ -215,13 +214,18 @@ public class DefaultApiClient implements ApiClient {
         try {
             ResponseEncryptItem responseItem = encryptResponse(request, rt, parser);
             tRsp = parser.parse(responseItem.getRealContent());
+            tRsp = JSONUtils.readValue(responseItem.getRealContent(), new TypeReference<T>(){
+            });
             tRsp.setBody(responseItem.getRealContent());
+            tRsp.setParams((BitmsMap) rt.get("textParams"));
+            return tRsp;
         } catch (RuntimeException e) {
             BitmsLogger.logBizError((String) rt.get("rsp"));
             throw e;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        tRsp.setParams((BitmsMap) rt.get("textParams"));
-        return tRsp;
+        return null;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.bitms.api.client.quotation;
 
 
+import com.bitms.api.client.constant.BitmsConst;
 import com.bitms.api.client.tool.HttpUtils;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import org.junit.Test;
  */
 public class TestQuotationController {
 
-    private String root = "http://api.bitms.com/api/v1/";
+    private String root = BitmsConst.ROOT;
 
     /**
      * Test to get public quotes

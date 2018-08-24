@@ -1,4 +1,4 @@
-package com.bitms.api.client.service;
+package com.bitms.api.client.bean.sign;
 
 import com.bitms.api.client.exception.ApiException;
 

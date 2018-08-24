@@ -4,7 +4,6 @@ import com.bitms.api.client.constant.BitmsConstants;
 import com.bitms.api.client.exception.ApiException;
 import com.bitms.api.client.mapping.ApiConverters;
 import com.bitms.api.client.mapping.Converter;
-import com.bitms.api.client.service.Reader;
 import com.bitms.api.client.tool.Encrypt;
 import com.bitms.api.client.tool.StringUtils;
 

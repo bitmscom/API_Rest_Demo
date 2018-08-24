@@ -1,4 +1,4 @@
-package com.bitms.api.client.trade.fund.bean;
+package com.bitms.api.client.service.bean;
 
 
 import com.bitms.api.client.bean.sign.BitmsObject;

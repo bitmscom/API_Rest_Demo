@@ -1,45 +1,43 @@
 package com.bitms.api.client.trade.fund.controller;
 
-import com.bitms.api.client.ApiClient;
-import com.bitms.api.client.DefaultApiClient;
+import com.bitms.api.client.BitmsServiceFactory;
+import com.bitms.api.client.bean.resp.fund.*;
 import com.bitms.api.client.bean.sign.ApiResponse;
-import com.bitms.api.client.bean.test.ApiBitmsRequest;
-import com.bitms.api.client.constant.BitmsConst;
-import com.bitms.api.client.constant.BitmsConstants;
-import com.bitms.api.client.tool.WebUtils;
-import com.bitms.api.client.trade.account.bean.UserInfoTest;
-import com.bitms.api.client.trade.fund.bean.*;
+import com.bitms.api.client.service.FundService;
+import com.bitms.api.client.service.bean.*;
+import com.bitms.api.client.tool.JSONUtils;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @version : 1.0
  * @discription : Asset test class
  * @create : 2018-07-07-14
  **/
-public class TestFundController{
+public class TestFundController {
 
-    private String root = BitmsConst.ROOT;
+    //Use timestamp as AES key
+    BitmsServiceFactory factory = BitmsServiceFactory.newInstance(String.valueOf(System.currentTimeMillis()));
 
-    //Bitms
-    private String apiKey = BitmsConst.apiKey;
-    //private key
-    private String priKey = BitmsConst.priKey;
+    FundService fundService = factory.newFundService();
+
     /**
      * Pure spot account
      *
      * @throws Exception
      */
     @Test
-    public void testGetPureSpotAsset() throws Exception {
-        String[] data1 = {root + "fund/pureSpotAsset", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testGetPureSpotAsset() {
         PureSpotBean data = new PureSpotBean();
         data.setSymbol("btc2usd");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
+        ApiResponse response = fundService.getPureSpotAsset(data);
         System.out.println(response.getBody());
+        List<PureSpotAssetBean> result = (List<PureSpotAssetBean>) response.getData();
+        System.out.println(result);
     }
 
     /**
@@ -48,16 +46,13 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testGetLeveragedSpotAsset() throws Exception {
-        String[] data1 = {root + "fund/leveragedSpotAsset", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testGetLeveragedSpotAsset() {
         LeveragedSpotBean data = new LeveragedSpotBean();
         data.setSymbol("btc2usd");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
+        ApiResponse response = fundService.getLeveragedSpotAsset(data);
         System.out.println(response.getBody());
+        List<AccountAssetBean> result = (List<AccountAssetBean>) response.getData();
+        System.out.println(result);
     }
 
     /**
@@ -66,16 +61,14 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testGetLeveragedAccountInfo() throws Exception {
-        String[] data1 = {root + "fund/leveragedAccountInfo", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testGetLeveragedAccountInfo() throws IOException {
         LeveragedSpotBean data = new LeveragedSpotBean();
         data.setSymbol("btc2usd");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
+        ApiResponse response = fundService.getLeveragedAccountInfo(data);
         System.out.println(response.getBody());
+        String temp = JSONUtils.writeValue(response.getData());
+        LeveragedAccountInfoBean result = JSONUtils.readValue(temp, LeveragedAccountInfoBean.class);
+        System.out.println(result);
     }
 
     /**
@@ -84,19 +77,16 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testWithdrawBitms() throws Exception {
-        String[] data1 = {root + "fund/withdraw", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testWithdrawBitms() {
         WithdrawBean data = new WithdrawBean();
         data.setAddress("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
-        data.setAmount("0.01");
+        data.setAmount(new BigDecimal(0.01));
         data.setCurrency("btc");
-        data.setFundPwd("963852");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
+        data.setFundPwd("123456");
+        ApiResponse response = fundService.withdrawBitms(data);
         System.out.println(response.getBody());
+        Long result = (Long) response.getData();
+        System.out.println(result);
     }
 
     /**
@@ -105,16 +95,13 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testWithdrawCancel() throws Exception {
-        String[] data1 = {root + "fund/withdraw_cancel", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testWithdrawCancel() {
         WithdrawCancelBean data = new WithdrawCancelBean();
         data.setWithdrawId(120748699621003264l);
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
+        ApiResponse response = fundService.withdrawCancel(data);
         System.out.println(response.getBody());
+        Long result = (Long) response.getData();
+        System.out.println(result);
     }
 
     /**
@@ -123,16 +110,14 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testWithdrawRecords() throws Exception {
-        String[] data1 = {root + "fund/withdraw_records", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testWithdrawRecords() {
         WithdrawRecordBean data = new WithdrawRecordBean();
         data.setCurrency("btc");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
+        ApiResponse response = fundService.withdrawRecords(data);
         System.out.println(response.getBody());
+        Map<String, Object> result = (Map<String, Object>) response.getData();
+        List<WithdrawRecordResponse> resResult = (List<WithdrawRecordResponse>) result.get("list");
+        System.out.println(resResult);
     }
 
     /**
@@ -141,16 +126,14 @@ public class TestFundController{
      * @throws Exception
      */
     @Test
-    public void testDepositRecords() throws Exception {
-        String[] data1 = {root + "fund/deposit_records", priKey, "123456789", apiKey};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
+    public void testDepositRecords() {
         WithdrawRecordBean data = new WithdrawRecordBean();
         data.setCurrency("btc");
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
+        ApiResponse response = fundService.depositRecords(data);
         System.out.println(response.getBody());
+        Map<String, Object> result = (Map<String, Object>) response.getData();
+        List<WithdrawRecordResponse> resResult = (List<WithdrawRecordResponse>) result.get("list");
+        System.out.println(resResult);
     }
 
 

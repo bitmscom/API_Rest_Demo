@@ -33,6 +33,9 @@ public class ApiResponse implements Serializable {
     @JSONField(ordinal = 5)
     private String body;
 
+    @ApiField("data")
+    private Object data;
+
     private Map<String, String> params;
 
     public String getStatus() {
@@ -81,5 +84,13 @@ public class ApiResponse implements Serializable {
 
     public void setParams(Map<String, String> params) {
         this.params = params;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }
