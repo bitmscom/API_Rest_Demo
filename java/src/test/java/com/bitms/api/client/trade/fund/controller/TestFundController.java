@@ -83,7 +83,12 @@ public class TestFundController {
         data.setAmount(new BigDecimal(0.01));
         data.setCurrency("btc");
         data.setFundPwd("123456");
+<<<<<<< HEAD
         ApiResponse response = fundService.withdrawBitms(data);
+=======
+        request.setBizModel(data);
+        ApiResponse response = client.execute(BitmsConstants.METHOD_POST, request);
+>>>>>>> ac98e6ac08bf737ce5460b00214aa069d6051758
         System.out.println(response.getBody());
         Long result = (Long) response.getData();
         System.out.println(result);

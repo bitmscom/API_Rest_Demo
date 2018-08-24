@@ -35,7 +35,11 @@ public class BitmsConst
      */
     public static final Integer  DEFAULT_PAGE_SIZE             = 10;
 
+<<<<<<< HEAD
     public static String ROOT = properties.getProperty("api.root");
+=======
+    public static String ROOT = "https://api.bitms.com/api/v1/";
+>>>>>>> ac98e6ac08bf737ce5460b00214aa069d6051758
 
     //Bitms
     public static String APIKEY = properties.getProperty("api.apiKey");
