@@ -11,14 +11,14 @@ import com.bitms.api.client.mapping.ApiField;
  **/
 public class PureSpotBean extends BitmsObject{
 
-    @ApiField("symbol")
-    private String symbol;
+    @ApiField("currency")
+    private String currency;
 
-    public String getSymbol() {
-        return symbol;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
