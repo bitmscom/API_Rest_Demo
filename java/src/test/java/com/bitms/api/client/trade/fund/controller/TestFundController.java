@@ -33,7 +33,7 @@ public class TestFundController {
     @Test
     public void testGetPureSpotAsset() {
         PureSpotBean data = new PureSpotBean();
-        data.setSymbol("btc2usd");
+        data.setCurrency("btc");
         ApiResponse response = fundService.getPureSpotAsset(data);
         System.out.println(response.getBody());
         List<PureSpotAssetBean> result = (List<PureSpotAssetBean>) response.getData();
