@@ -24,8 +24,6 @@ public class CurrentOrderResponse {
 
     private BigDecimal dealAmount;
 
-    private BigDecimal dealBalance;
-
     private BigDecimal dealFee;
 
     private String source;
@@ -88,14 +86,6 @@ public class CurrentOrderResponse {
 
     public void setDealAmount(BigDecimal dealAmount) {
         this.dealAmount = dealAmount;
-    }
-
-    public BigDecimal getDealBalance() {
-        return dealBalance;
-    }
-
-    public void setDealBalance(BigDecimal dealBalance) {
-        this.dealBalance = dealBalance;
     }
 
     public BigDecimal getDealFee() {

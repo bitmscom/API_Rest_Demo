@@ -21,11 +21,6 @@ public class DealInfoResponse {
     private BigDecimal dealAmount;
 
     /**
-     * deal balance
-     */
-    private BigDecimal dealBalance;
-
-    /**
      * deal ID
      */
     private Long dealId;
@@ -64,14 +59,6 @@ public class DealInfoResponse {
 
     public void setDealAmount(BigDecimal dealAmount) {
         this.dealAmount = dealAmount;
-    }
-
-    public BigDecimal getDealBalance() {
-        return dealBalance;
-    }
-
-    public void setDealBalance(BigDecimal dealBalance) {
-        this.dealBalance = dealBalance;
     }
 
     public Long getDealId() {

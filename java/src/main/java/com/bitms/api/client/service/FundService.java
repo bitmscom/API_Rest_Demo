@@ -20,14 +20,6 @@ public interface FundService {
     ApiResponse getPureSpotAsset(PureSpotBean data);
 
     /**
-     * Leveraged spot account
-     *
-     * @param data
-     * @return
-     */
-    ApiResponse getLeveragedSpotAsset(LeveragedSpotBean data);
-
-    /**
      * Leverage account information
      *
      * @param data

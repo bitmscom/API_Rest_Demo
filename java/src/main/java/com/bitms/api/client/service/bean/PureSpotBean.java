@@ -9,7 +9,7 @@ import com.bitms.api.client.mapping.ApiField;
  * @discription : Pure spot bean
  * @create : 2018-07-25-15
  **/
-public class PureSpotBean extends BitmsObject{
+public class PureSpotBean extends BitmsObject {
 
     @ApiField("currency")
     private String currency;

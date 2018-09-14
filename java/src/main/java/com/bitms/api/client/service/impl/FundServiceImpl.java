@@ -33,16 +33,6 @@ public class FundServiceImpl implements FundService {
         return response;
     }
 
-    public ApiResponse getLeveragedSpotAsset(LeveragedSpotBean data) {
-        String[] data1 = {BitmsConst.ROOT + "fund/leveragedSpotAsset", BitmsConst.PRIKEY, encryptKey, BitmsConst.APIKEY};
-        ApiClient client = new DefaultApiClient(data1);
-        ApiBitmsRequest request = new ApiBitmsRequest();
-        request.setNeedEncrypt(true);
-        request.setBizModel(data);
-        ApiResponse response = client.execute(BitmsConstants.METHOD_GET, request);
-        return response;
-    }
-
     public ApiResponse getLeveragedAccountInfo(LeveragedSpotBean data) {
         String[] data1 = {BitmsConst.ROOT + "fund/leveragedAccountInfo", BitmsConst.PRIKEY, encryptKey, BitmsConst.APIKEY};
         ApiClient client = new DefaultApiClient(data1);

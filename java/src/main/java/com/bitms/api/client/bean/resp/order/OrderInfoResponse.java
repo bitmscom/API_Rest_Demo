@@ -31,8 +31,6 @@ public class OrderInfoResponse {
 
     private BigDecimal dealAmount;
 
-    private BigDecimal dealBalance;
-
     private BigDecimal dealFee;
 
     private Timestamp finishedTime;
@@ -119,14 +117,6 @@ public class OrderInfoResponse {
 
     public void setDealAmount(BigDecimal dealAmount) {
         this.dealAmount = dealAmount;
-    }
-
-    public BigDecimal getDealBalance() {
-        return dealBalance;
-    }
-
-    public void setDealBalance(BigDecimal dealBalance) {
-        this.dealBalance = dealBalance;
     }
 
     public BigDecimal getDealFee() {

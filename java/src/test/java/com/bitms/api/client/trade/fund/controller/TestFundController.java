@@ -41,21 +41,6 @@ public class TestFundController {
     }
 
     /**
-     * Leveraged spot account
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetLeveragedSpotAsset() {
-        LeveragedSpotBean data = new LeveragedSpotBean();
-        data.setSymbol("btc2usd");
-        ApiResponse response = fundService.getLeveragedSpotAsset(data);
-        System.out.println(response.getBody());
-        List<AccountAssetBean> result = (List<AccountAssetBean>) response.getData();
-        System.out.println(result);
-    }
-
-    /**
      * Leverage account information
      *
      * @throws Exception

@@ -87,7 +87,6 @@ public class ApiResponse implements Serializable {
     }
 
     public Object getData() {
-        if (!status.equalsIgnoreCase("ok")) return null;
         return data;
     }
 
