@@ -1,7 +1,9 @@
 package com.bitms.api.client.trade.fund.controller;
 
 import com.bitms.api.client.BitmsServiceFactory;
-import com.bitms.api.client.bean.resp.fund.*;
+import com.bitms.api.client.bean.resp.fund.LeveragedAccountInfoBean;
+import com.bitms.api.client.bean.resp.fund.PureSpotAssetBean;
+import com.bitms.api.client.bean.resp.fund.WithdrawRecordResponse;
 import com.bitms.api.client.bean.sign.ApiResponse;
 import com.bitms.api.client.service.FundService;
 import com.bitms.api.client.service.bean.*;
@@ -41,15 +43,15 @@ public class TestFundController {
     }
 
     /**
-     * Leverage account information
+     * Future account information
      *
      * @throws Exception
      */
     @Test
-    public void testGetLeveragedAccountInfo() throws IOException {
+    public void testGetFutureAccountInfo() throws IOException {
         LeveragedSpotBean data = new LeveragedSpotBean();
         data.setSymbol("btc2usd");
-        ApiResponse response = fundService.getLeveragedAccountInfo(data);
+        ApiResponse response = fundService.getFutureAccountInfo(data);
         System.out.println(response.getBody());
         String temp = JSONUtils.writeValue(response.getData());
         LeveragedAccountInfoBean result = JSONUtils.readValue(temp, LeveragedAccountInfoBean.class);

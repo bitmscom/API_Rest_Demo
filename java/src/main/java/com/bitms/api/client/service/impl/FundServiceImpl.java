@@ -33,8 +33,8 @@ public class FundServiceImpl implements FundService {
         return response;
     }
 
-    public ApiResponse getLeveragedAccountInfo(LeveragedSpotBean data) {
-        String[] data1 = {BitmsConst.ROOT + "fund/leveragedAccountInfo", BitmsConst.PRIKEY, encryptKey, BitmsConst.APIKEY};
+    public ApiResponse getFutureAccountInfo(LeveragedSpotBean data) {
+        String[] data1 = {BitmsConst.ROOT + "fund/futureAccountInfo", BitmsConst.PRIKEY, encryptKey, BitmsConst.APIKEY};
         ApiClient client = new DefaultApiClient(data1);
         ApiBitmsRequest request = new ApiBitmsRequest();
         request.setNeedEncrypt(true);

@@ -8,8 +8,6 @@ package com.bitms.api.client;
 import com.bitms.api.client.bean.sign.*;
 import com.bitms.api.client.constant.BitmsConstants;
 import com.bitms.api.client.exception.ApiException;
-import com.bitms.api.client.bean.sign.ApiBitmsParser;
-import com.bitms.api.client.bean.sign.ApiUploadRequest;
 import com.bitms.api.client.tool.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 

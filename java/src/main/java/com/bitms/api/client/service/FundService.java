@@ -20,12 +20,12 @@ public interface FundService {
     ApiResponse getPureSpotAsset(PureSpotBean data);
 
     /**
-     * Leverage account information
+     * Future account information
      *
      * @param data
      * @return
      */
-    ApiResponse getLeveragedAccountInfo(LeveragedSpotBean data);
+    ApiResponse getFutureAccountInfo(LeveragedSpotBean data);
 
     /**
      * Coin withdrawal request

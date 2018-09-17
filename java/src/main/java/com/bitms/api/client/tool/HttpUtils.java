@@ -9,18 +9,13 @@ package com.bitms.api.client.tool;
 import com.bitms.api.client.constant.CharsetConst;
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,7 +23,6 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -197,6 +191,17 @@ public class HttpUtils {
      */
     public static String get(String url) {
         return get(getHttpClient(), url, null, null, null);
+    }
+
+    /**
+     *       * Get method is submitted, the URL contains the query parameters, format: http://www.g.cn
+     *       *
+     *       * @param url submit address, for example: http://www.g.cn
+     *       * @return String response message, Html source code for this address
+     *      
+     */
+    public static String get(String url, Map<String, String> map) {
+        return get(getHttpClient(), url, map, "UTF-8", null);
     }
 
     /**

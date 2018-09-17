@@ -37,7 +37,7 @@ public class TestTradeController {
     @Test
     public void doMatchRequest() {
         EntrustBean data = new EntrustBean();
-        data.setAmount(new BigDecimal("0.01"));
+        data.setAmount(new BigDecimal("1"));
         data.setDirect("buy");
         data.setPrice(new BigDecimal(6000));
         data.setSymbol("btc2usd");

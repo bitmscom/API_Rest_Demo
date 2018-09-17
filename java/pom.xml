@@ -2,14 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>BitmsAPI</artifactId>
-        <groupId>com.bitms.api.client</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.bitms.api.client</groupId>
     <artifactId>bitms-java-api</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -103,5 +101,6 @@
             </plugins>
         </pluginManagement>
     </build>
+
 
 </project>

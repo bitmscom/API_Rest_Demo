@@ -3,7 +3,10 @@ package com.bitms.api.client.quotation;
 
 import com.bitms.api.client.constant.BitmsConst;
 import com.bitms.api.client.tool.HttpUtils;
+import com.google.common.collect.Maps;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * Quotetion test
@@ -17,7 +20,9 @@ public class TestQuotationController {
      */
     @Test
     public void testTicker() {
-        String json = HttpUtils.get(root + "ticker?symbol=btc2usd&");
+        Map<String, String> data = Maps.newHashMap();
+        data.put("symbol", "btc2usd");
+        String json = HttpUtils.get(root + "ticker", data);
         System.out.println(json);
     }
 
@@ -26,7 +31,10 @@ public class TestQuotationController {
      */
     @Test
     public void testKline() {
-        String json = HttpUtils.get(root + "ticker?symbol=btc2usd&type=hour");
+        Map<String, String> data = Maps.newHashMap();
+        data.put("symbol", "btc2usd");
+        data.put("type", "hour");
+        String json = HttpUtils.get(root + "ticker");
         System.out.println(json);
     }
 
@@ -35,7 +43,9 @@ public class TestQuotationController {
      */
     @Test
     public void testDepth() {
-        String json = HttpUtils.get(root + "depth?symbol=btc2usd&");
+        Map<String, String> data = Maps.newHashMap();
+        data.put("symbol", "btc2usd");
+        String json = HttpUtils.get(root + "depth");
         System.out.println(json);
     }
 
@@ -44,7 +54,9 @@ public class TestQuotationController {
      */
     @Test
     public void testTrades() {
-        String json = HttpUtils.get(root + "trades?symbol=btc2usd&");
+        Map<String, String> data = Maps.newHashMap();
+        data.put("symbol", "btc2usd");
+        String json = HttpUtils.get(root + "trades");
         System.out.println(json);
     }
 

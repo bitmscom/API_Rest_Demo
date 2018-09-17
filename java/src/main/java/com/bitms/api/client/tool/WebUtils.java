@@ -1,14 +1,12 @@
 package com.bitms.api.client.tool;
 
 import com.bitms.api.client.bean.sign.FileItem;
-import com.bitms.api.client.bean.sign.RequestHolder;
 import com.bitms.api.client.constant.BitmsConstants;
 
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
